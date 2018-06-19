@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Beautiful Song</title>
+
   <!-- BOOTSTRAP  -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
+  
 </head>
 
 <body>
-
+  <!-- The header displayed at the top of the page. -->
   <header class="jumbotron jumbotron-fluid text-center bg-info text-white"> 
     <div class="container">
       <h1>Beautiful Song</h1>
@@ -30,20 +30,36 @@
   </header>
 
   <section class="container">
-    <!-- first row -->
+    <!-- First row. -->
     <div class="row">
-
-      <!-- video window -->
+      <!-- Video window dispaying YouTube. -->
       <div class="col-8" id="videoWindow" style="background-color: red; height: 400px;">
-        
       </div>
 
-      <!-- my list -->
+      <!-- List displaying playlist information. -->
       <div class="col-4 text-white p-2" id="mylist" style="background-color: blue; height: 400px;">
-        <p>hasishiohdiwoehd</p>
-        <p>dndiofioewrhfirwh</p>
+          <table class="table" id="playlist-song" style="border: 0; border-style: none">
+              <thead>
+                <tr>
+                  <th scope="col">Album</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Artist</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="album-art"></th>
+                </tr>
+                <tr>
+                  <th scope="song-title"></th>
+                </tr>
+                <tr>
+                  <th scope="artist"></th>
+                </tr>
+              </tbody>
+            </table>
       </div>
-    </div><!-- first row end-->
+    </div>
 
     <!-- 2nd row lyric-->
     <div class="row" id="lyric" style="background-color: green; height: 400px;" >
@@ -59,12 +75,12 @@
   </section>
 
     <footer class="fixed-bottom bg-info">
-
     <p class="text-white font-weight-light text-center pt-3">copyright&copy;</p></div>
     
+    <!-- Javascript Ref -->
+    <script type="text/javascript" src="assets/JS/myJS.js"></script>
+
   </footer>
 
- <script type="text/javascript" src="assets/JS/myJS.js"></script>
 </body>
-
 </html>
