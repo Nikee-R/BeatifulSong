@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- VIDEOJS player plugin-playlist-ui -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/videojs-playlist-ui@3.4.0/dist/videojs-playlist-ui.vertical.min.css">
+  <!-- VIDEOJS player link -->
+  <link href="https://vjs.zencdn.net/7.0.3/video-js.css" rel="stylesheet">
+  <!-- my CSS -->
+   <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
   
 </head>
 
@@ -32,33 +38,59 @@
   <section class="container">
     <!-- First row. -->
     <div class="row">
-      <!-- Video window dispaying YouTube. -->
+      <!-- Video window dispaying YouTube video. -->
       <div class="col-8" id="videoWindow" style="background-color: red; height: 400px;">
+        <section class="main-preview-player container p-0">
+          <video id="preview-player" class="video-js vjs-fluid vjs-16-9" controls preload="auto" crossorigin="anonymous"autoplay loop = "true" data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/embed/DsUmmudjkfQ"}] }'>
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+          </video>
+          
+          <div class="playlist-container preview-player-dimensions vjs-fluid">
+            <ol class="vjs-playlist vjs-csspointerevents vjs-mouse">
+            <li class="vjs-playlist-item vjs-selected" tabindex="0"><picture class="vjs-playlist-thumbnail vjs-playlist-now-playing"><source srcset="https://i.ytimg.com/vi/EBt_88nxG4c/mqdefault.jpg" type="image/jpg" media="(min-width: 400px;)"><img src="https://i.ytimg.com/vi/EBt_88nxG4c/mqdefault.jpg"></picture><time class="vjs-playlist-duration" datetime="PT0H0M45S">0:45</time><cite class="vjs-playlist-name" title="Disney's Oceans">Disney's Oceans</cite><p class="vjs-playlist-description" title="Explore the depths of our planet's oceans. Experience the stories that connect their world to ours. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">Explore the depths of our planet's oceans. Experience the stories that connect their world to ours. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></li><li class="vjs-playlist-item" tabindex="0"><picture class="vjs-playlist-thumbnail"><source srcset="https://i.ytimg.com/vi/EBt_88nxG4c/mqdefault.jpg" type="image/png" media="(min-width: 400px;)"><img src="https://i.ytimg.com/vi/EBt_88nxG4c/mqdefault.jpg"></picture><time class="vjs-playlist-duration" datetime="PT0H0M888S">14:48</time><cite class="vjs-playlist-name" title="Sintel">Sintel</cite><p class="vjs-playlist-description" title="The film follows a girl named Sintel who is searching for a baby dragon she calls Scales.">The film follows a girl named Sintel who is searching for a baby dragon she calls Scales.</p></li><li class="vjs-playlist-item" tabindex="0"><div class="vjs-playlist-thumbnail"></div><cite class="vjs-playlist-name" title="Advanced Bip Bop">Advanced Bip Bop</cite><p class="vjs-playlist-description" title="Apple's test HLS stream">Apple's test HLS stream</p></li><li class="vjs-playlist-item" tabindex="0"><picture class="vjs-playlist-thumbnail"><source srcset="//d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png" type="image/png" media="(min-width: 400px;)"><img src="//d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png"></picture><time class="vjs-playlist-duration" datetime="PT0H0M653S">10:53</time><cite class="vjs-playlist-name" title="Elephant's Dream">Elephant's Dream</cite><p class="vjs-playlist-description" title="The film features two men, Proog, who is older and more experienced, and Emo, who is young and nervous, living in a miraculous construction referred to only as &quot;The Machine&quot;.">The film features two men, Proog, who is older and more experienced, and Emo, who is young and nervous, living in a miraculous construction referred to only as "The Machine".</p></li><li class="vjs-playlist-item" tabindex="0"><picture class="vjs-playlist-thumbnail"><source srcset="//d2zihajmogu5jn.cloudfront.net/tears-of-steel/tears_of_steel.jpg" type="image/jpeg" media="(min-width: 400px;)"><img src="//d2zihajmogu5jn.cloudfront.net/tears-of-steel/tears_of_steel.jpg"></picture><time class="vjs-playlist-duration" datetime="PT0H0M733S">12:13</time><cite class="vjs-playlist-name" title="Tears of Steel">Tears of Steel</cite></li><li class="vjs-playlist-item" tabindex="0"><picture class="vjs-playlist-thumbnail"><source srcset="//d2zihajmogu5jn.cloudfront.net/big-buck-bunny/bbb.png" type="image/png" media="(min-width: 400px;)"><img src="//d2zihajmogu5jn.cloudfront.net/big-buck-bunny/bbb.png"></picture><time class="vjs-playlist-duration" datetime="PT0H0M596S">9:56</time><cite class="vjs-playlist-name" title="Big Buck Bunny">Big Buck Bunny</cite><p class="vjs-playlist-description" title="The plot follows a day of the life of Big Buck Bunny when he meets three bullying rodents, Frank (the leader of the rodents), Rinky and Gimera.">The plot follows a day of the life of Big Buck Bunny when he meets three bullying rodents, Frank (the leader of the rodents), Rinky and Gimera.</p></li><li class="vjs-playlist-ad-overlay"></li>
+            <li class="vjs-playlist-item vjs-selected">
+            <picture class="vjs-playlist-thumbnail vjs-playlist-now-playing">
+            <img src="https://i.ytimg.com/vi/EBt_88nxG4c/mqdefault.jpg" width="200" />
+            </picture>
+            </li>
+           <li class="vjs-playlist-item vjs-selected" tabindex="0">
+            <picture class="vjs-playlist-thumbnail vjs-playlist-now-playing">
+            <source srcset="https://i.ytimg.com/vi/qrO4YZeyl0I/hqdefault.jpg" type="image/png" media="(min-width: 400px;)">
+            <img src="https://i.ytimg.com/vi/qrO4YZeyl0I/hqdefault.jpg">
+            <time class="vjs-playlist-duration" datetime="PT0H0M45S">0:45</time>
+            <cite class="vjs-playlist-name" title="Disney's Oceans">Disney's Oceans</cite>
+            <p class="vjs-playlist-description" title="haha">haha</p>
+            </picture>
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            </ol>
+          </div>
+        </section>
       </div>
-
       <!-- List displaying playlist information. -->
-      <div class="col-4 text-white p-2" id="mylist" style="background-color: blue; height: 400px;">
-          <table class="table" id="playlist-song" style="border: 0; border-style: none">
+      <div class="col-4 text-white p-2" id="login-container" class="pre-auth" style="background-color: blue; height: 400px;">
+          <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Album</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Artist</th>
+                  <th id='artist-name'>Artist</th>
+                  <th id='album-name'>Album</th>
+                  <th id='song-name'>Song</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="album-art"></th>
-                </tr>
-                <tr>
-                  <th scope="song-title"></th>
-                </tr>
-                <tr>
-                  <th scope="artist"></th>
+                  <th></th>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
       </div>
+      <!-- Button to change the page to the next. -->
+      <button class="col-1 p-2" id="changePage" class="btn btn-warning text-secondary" type="submit"><<</button>
+      <button class="col-1 p-2" id="changePage" class="btn btn-warning text-secondary" type="submit">>></button>
     </div>
 
     <!-- 2nd row lyric-->
@@ -78,7 +110,13 @@
     <p class="text-white font-weight-light text-center pt-3">copyright&copy;</p></div>
     
     <!-- Javascript Ref -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="assets/JS/myJS.js"></script>
+    <script src="playlist_updates.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    <script src="https://vjs.zencdn.net/7.0.3/video.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.5.0/Youtube.min.js"></script>
+    <script src="https://mux-sdks-test.s3.amazonaws.com/videojs/0/videojs-mux.js"></script>
 
   </footer>
 
