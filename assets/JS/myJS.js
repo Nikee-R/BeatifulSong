@@ -345,6 +345,7 @@ $(document).ready(function() {
 		    contentType: 'application/json',
 		    success: function(data) {
 		        console.log(data);
+		        $('#currentLyric').empty();
 		        // console.log(data.message.body.lyrics.lyrics_body);
 		        var x = JSON.stringify(data.message.body.lyrics.lyrics_body)
 		        var haha = x.replace(/\\n/g, "<br/>");
@@ -368,10 +369,10 @@ $(document).ready(function() {
         url: gooArtistQuery,
         method: "GET"
         }).then (function (response){
-        	$("#infoImg").empty();
+        	$("#infoImg").attr("src","").removeClass("img-thumbnail");
             $("#artist_name_info").empty();
             $("#infoText").empty();
-            $("#artistWebsiteFind").empty();
+            $("#artistWebsite").empty();
 
             var results= response.itemListElement;
             // console.log (results);
@@ -385,8 +386,7 @@ $(document).ready(function() {
             console.log(artistImageURL); 
             
             // $("<img>").attr("src", artistImageURL).attr("id", "infoImg").addClass("img-thumbnail mw-10 float-left mr-4").att("with","250").prependTo($("#bio"));
-  
-            $("#infoImg").attr("src", artistImageURL);
+            $("#infoImg").attr("src", artistImageURL).addClass("img-thumbnail");
             $("#artist_name_info").text(artistName_info);
             $("#infoText").text(artistDescription);
             $("#artistWebsite").text("Find more info on ").append($("<span>").addClass("text-info").text(artistOfficialURL));
@@ -402,10 +402,6 @@ $(document).ready(function() {
             console.log(album);
             $("#albumInfo").text(album).prepend($("<span>").addClass("text-info font-weight-bold").text("About The Album "));
     });
-    
-
-
-
     // ============= google ajax end ====================================================    
 		
 	});	// #searchButton event function ends
