@@ -129,8 +129,8 @@ $(document).ready(function() {
 
 		} else { addIt();}//if userList has no ob, then call addIt func direacly
 
-		console.log(myList);
-		console.log(userList);
+		// console.log(myList);
+		// console.log(userList);
 
 	});//toMyListBtn end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -152,8 +152,8 @@ $(document).ready(function() {
 		console.log(currentIndex_user);
 		//delete clicked oject from userList
 		userList.splice(currentIndex_user, 1);
-		console.log(userList);
-		console.log(myList);
+		// console.log(userList);
+		// console.log(myList);
 
 		this.parentElement.parentElement.remove();
 	}); //delete video func end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -219,8 +219,8 @@ $(document).ready(function() {
 	      async: false,
 	    }).then (function (response){
 
-	    	console.log("youTube API data is below")
-	    	console.log(response);
+	    	// console.log("youTube API data is below")
+	    	// console.log(response);
 
 	    	//var to hold 5 videoID | var to hold 5 videoTitle
 			var videoIdArr = []; 
@@ -270,9 +270,8 @@ $(document).ready(function() {
 		    var durationURLarr = [];
 		    var durationArr = [];
 
-		    console.log("inside ajax, myList is ")
-		    console.log(myList);
-
+		    // console.log("inside ajax, myList is ")
+		    // console.log(myList);
 		   
 		    for (i=0; i<myList.length; i++) { 
 		        var ajaxList_end = [];		    	
@@ -312,23 +311,17 @@ $(document).ready(function() {
 
 			player.playlist(myList);
 			player.playlistUi();
-
 		    
 		    var res = videoTitleArr[0].split("-");
 		    $("#song_title").text(response.items[0].snippet.title);
 
-		    // artistName = res[0].split(' ').join('');
+		    // artist name and track name will be used by lyrics ajax later
 		    artistName = res[0].trim();
-
 		    var foo = res[1].split("(");
-		    // trackName = foo[0].split(' ').join('');
-		    trackName = foo[0].trim();
-
-		
+		    trackName = foo[0].trim();		
 		}); //youTube ajax ends	
-		console.log(myList);
+		// console.log(myList);
 		
-
 		//place the first video in new playlist into player
 		videojs('video').ready(function() {
 	    		var myPlayer = this;
@@ -358,7 +351,62 @@ $(document).ready(function() {
 
 		        $('#currentLyric').html(haha);
 		    },			     
-		}); // ajax end
+		}); // ajax for lyrics end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// ============= Artist search variables =============    
+// Searching for the artist seems kinda iffy, the search for pink first leads to Pink Floyd    
+    var gooArtistQuery=	'https://kgsearch.googleapis.com/v1/entities:search?query=' + 
+    					artistName + 
+    					'&key=AIzaSyCAu8rpZg4vODYzCd1Guz3m8YwLWBZpilM&limit=5';
+// ============== Album Search by track variables=====
+// You can search by track to get info on the album. For some reason, trimming the spaces leads to disasterous results.
+    var gooSongQuery= 	'https://kgsearch.googleapis.com/v1/entities:search?query=' + 
+    					trackName + 
+    					'&types=MusicAlbum'+ '&key=AIzaSyCAu8rpZg4vODYzCd1Guz3m8YwLWBZpilM&limit=5'
+// ===========================        
+    $.ajax({
+        url: gooArtistQuery,
+        method: "GET"
+        }).then (function (response){
+        	$("#infoImg").empty();
+            $("#artist_name_info").empty();
+            $("#infoText").empty();
+            $("#artistWebsiteFind").empty();
+
+            var results= response.itemListElement;
+            // console.log (results);
+            var artistName_info = results[0].result.name;
+            var artistDescription = results[0].result.detailedDescription.articleBody;
+            var artistOfficialURL = results[0].result.url;
+            var artistImageURL= results[0].result.image.contentUrl;
+            console.log(artistOfficialURL);
+            console.log(artistName_info);
+            console.log(artistDescription);
+            console.log(artistImageURL); 
+            
+            // $("<img>").attr("src", artistImageURL).attr("id", "infoImg").addClass("img-thumbnail mw-10 float-left mr-4").att("with","250").prependTo($("#bio"));
+  
+            $("#infoImg").attr("src", artistImageURL);
+            $("#artist_name_info").text(artistName_info);
+            $("#infoText").text(artistDescription);
+            $("#artistWebsite").text("Find more info on ").append($("<span>").addClass("text-info").text(artistOfficialURL));
+    }); //end of artist search ajax
+
+    $.ajax({
+        url: gooSongQuery,
+        method: "GET"
+        }).then (function (response){
+        	$("#albumInfo").empty();
+        	console.log(response);
+            var album = response.itemListElement[0].result.detailedDescription.articleBody;
+            console.log(album);
+            $("#albumInfo").text(album).prepend($("<span>").addClass("text-info font-weight-bold").text("About The Album "));
+    });
+    
+
+
+
+    // ============= google ajax end ====================================================    
 		
 	});	// #searchButton event function ends
 });//doc ready function ends
